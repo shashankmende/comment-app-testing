@@ -16,7 +16,27 @@ const initialContainerBackgroundClassNames = [
 
 // Write your code here
 class Comments extends Component {
-  state = {commentsList: [], name: '', comment: '', isLiked: false}
+  state = {commentsList: [], name: '', comment: ''}
+
+  onClickLikeComment = id => {
+    this.setState(prevState => ({
+      commentsList: prevState.commentsList.map(eachComment => {
+        if (id === eachComment.id) {
+          return {...prevState, isLiked: !eachComment.isLiked}
+        }
+        return eachComment
+      }),
+    }))
+  }
+
+  onClickDelete = id => {
+    console.log('comment id =', id)
+    this.setState(prevState => ({
+      commentsList: prevState.commentsList.filter(
+        eachComment => id !== eachComment.id,
+      ),
+    }))
+  }
 
   onClickAddBtn = () => {
     const {name, comment} = this.state
@@ -24,13 +44,13 @@ class Comments extends Component {
       name,
       comment,
       id: uuidv4(),
+      isLiked: false,
     }
     this.setState(prevState => ({
       commentsList: [...prevState.commentsList, newComment],
       name: '',
       comment: '',
     }))
-    const {commentsList} = this.state
   }
 
   onClickNameInput = event => {
@@ -47,15 +67,15 @@ class Comments extends Component {
 
   render() {
     const {commentsList, name, comment} = this.state
-    console.log('commentsList = ', commentsList)
+    console.log('is liked', commentsList)
     const noOfComments = commentsList.length
     return (
       <div className="bg_container">
         <div className="top-card">
-          <div>
+          <form>
             <h1 className="heading">Comments</h1>
             <img
-              src="https://assets.ccbp.in/frontend/react-js/comments-app/comments-img.png "
+              src="https://assets.ccbp.in/frontend/react-js/comments-app/comments-img.png"
               alt="comments"
               className="comments-image small-screen-image"
             />
@@ -83,10 +103,10 @@ class Comments extends Component {
             >
               Add Comment
             </button>
-          </div>
+          </form>
 
           <img
-            src="https://assets.ccbp.in/frontend/react-js/comments-app/comments-img.png "
+            src="https://assets.ccbp.in/frontend/react-js/comments-app/comments-img.png"
             alt="comments"
             className="comments-image large-screen-image"
           />
@@ -100,6 +120,8 @@ class Comments extends Component {
           <ul className="unordered-list">
             {commentsList.map(eachUser => (
               <CommentItem
+                onClickLikeComment={this.onClickLikeComment}
+                onClickDelete={this.onClickDelete}
                 key={eachUser.id}
                 user={eachUser}
                 bgColorsList={initialContainerBackgroundClassNames}
