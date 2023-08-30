@@ -27,3 +27,118 @@
 }
 
 /* Write your CSS here */
+
+.list-item {
+  width: 100%;
+  margin-bottom: 20px;
+  list-style-type: none;
+}
+.name-time-container {
+  min-width: 140%;
+  height: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.heading {
+  margin-right: 30px;
+}
+.time {
+  font-size: 15px;
+  color: #94a3b8;
+}
+.comment {
+  color: #334155;
+}
+
+.like-delete-inside-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  width: 80px;
+}
+.like-button {
+  height: 60px;
+  width: 60px;
+  background-color: white;
+  border: none;
+}
+@media screen and (max-width: 767px) {
+  .list-item {
+    width: 100%;
+    margin-bottom: 20px;
+    list-style-type: none;
+  }
+  .name-time-comment-container {
+    width: 100%;
+    margin-left: 15px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  .porfile-icon-container {
+    height: 40px;
+    width: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    border-radius: 50px;
+  }
+  .top-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    width: 300px;
+  }
+  .like-delete-container {
+    width: 300px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+@media screen and (min-width: 768px) {
+  .list-item {
+    width: 100%;
+    margin-bottom: 20px;
+    list-style-type: none;
+  }
+  .name-time-comment-container {
+    margin-left: 15px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  .porfile-icon-container {
+    height: 40px;
+    width: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    border-radius: 50px;
+  }
+  .top-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+  .like-delete-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
